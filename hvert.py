@@ -20,7 +20,7 @@ linkCities = {
 }
 
 
-def answer(c:str) -> int:
+def answer(c: str) -> int:
     """
     Returns either a 1 or 2
     1 = Reykjavik

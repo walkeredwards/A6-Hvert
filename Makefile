@@ -1,37 +1,24 @@
-TEST = pytest 
-TEST_ARGS = --verbose --color=yes
-TYPE_CHECK = mypy --strict
-STYLE_CHECK = flake8
-STYLE_FIX = autopep8 --in-place --recursive --aggressive --aggressive
+all: unittest test
+	@echo "All done..."
 
-.PHONY: all
-all: style-check type-check run-test clean
+unittest:
+	pytest -v test_hvert.py
 
-.PHONY: type-check
-type-check:
-	$(TYPE_CHECK) .
+test:
+	@cat 1.in | python hvert.py | diff - 1.ans
+	@cat 2.in | python hvert.py | diff - 2.ans
+	@cat hvert1.in | python hvert.py | diff - hvert1.ans
+	@cat hvert2.in | python hvert.py | diff - hvert2.ans
+	@echo "All Local Tests Passed..."
 
-.PHONY: style-check
 style-check:
-	$(STYLE_CHECK) .
+	flake8 .
 
-# discover and run all tests
-.PHONY: run-test
-run-test:
-	$(TEST) $(TEST_ARGS) .
+type-check:
+	mypy --strict .
 
-.PHONY: clean
-clean:
-	rm -rf __pycache__
-	rm -rf .pytest_cache
-	rm -rf .mypy_cache
-	rm -rf .hypothesis
+kattis:
+	@kattis -f hvert.py -p hvert
 
-
-.PHONY: push
-push: run-test clean
-	
-
-.PHONY: fix-style
-fix-style:
-	$(STYLE_FIX) .
+style-fix:
+	autopep8 --in-place --recursive --aggressive --aggressive .

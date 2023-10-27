@@ -1,23 +1,28 @@
-# 1 = Reykjavik
-# 2 = Akureyri
+"""
+1 = Reykjavik
+2 = Akureyri
+"""
+
 
 linkCities = {
-    "Reykjavik" : 1,
-    "Kopavogur" : 1,
-    "Hafnarfjordur" : 1,
-    "Reykjanesbaer" : 1,
-    "Akureyri" : 2,
-    "Gardabaer" : 1,
-    "Mosfellsbaer" : 1,
-    "Arborg" : 1,
-    "Akranes" : 1,
-    "Fjardabyggd" : 2,
-    "Mulathing" : 2,
-    "Seltjarnarnes" : 1,
+    "Reykjavik": 1,
+    "Kopavogur": 1,
+    "Hafnarfjordur": 1,
+    "Reykjanesbaer": 1,
+    "Akureyri": 2,
+    "Gardabaer": 1,
+    "Mosfellsbaer": 1,
+    "Arborg": 1,
+    "Akranes": 1,
+    "Fjardabyggd": 2,
+    "Mulathing": 2,
+    "Seltjarnarnes": 1,
 }
 
-def answer(c) -> int:
-    """returns either a 1 or 2, 
+
+def answer(c:str) -> int:
+    """
+    Returns either a 1 or 2
     1 = Reykjavik
     2 = Akureyri
 
@@ -29,6 +34,7 @@ def answer(c) -> int:
     """
     return linkCities.get(c)
 
+
 def solve() -> None:
     """main function for hvert problem
     """
@@ -37,6 +43,7 @@ def solve() -> None:
         print("Reykjavik")
     else:
         print("Akureyri")
+
 
 if __name__ == "__main__":
     solve()
